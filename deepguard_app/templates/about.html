@@ -1,0 +1,264 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>About | DeepGuard - LSTM Deepfake Detection</title>
+    <meta name="description" content="Learn about our LSTM-based Deepfake Video Detection System developed at KJ College of Engineering & Management Research">
+    <link rel="stylesheet" href="{% static 'css/common.css' %}">
+    <link rel="stylesheet" href="{% static 'css/about.css' %}">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
+</head>
+<body>
+
+<!-- Navbar -->
+<nav class="navbar">
+    <div class="navbar-container">
+        <div class="logo">
+            <a href="{% url 'home' %}"><img src="{% static 'assets/logo.png' %}" alt="DeepGuard Logo"></a>
+            <span>DeepGuard</span>
+        </div>
+        <div class="nav-links">
+            <a href="{% url 'home' %}">Home</a>
+            <a href="{% url 'login' %}">Login</a>
+            <a href="{% url 'chart' %}">Accuracy</a>
+            <a href="{% url 'about' %}" class="active">About</a>
+            <button id="theme-toggle" class="theme-toggle">
+                <i class="fas fa-moon"></i>
+            </button>
+        </div>
+        <div class="mobile-menu">
+            <i class="fas fa-bars"></i>
+        </div>
+    </div>
+</nav>
+
+<main class="about-container">
+
+    <!-- Page Header -->
+    <header class="about-header">
+        <h1>About DeepGuard</h1>
+        <p>LSTM-Based Deepfake Video Detection System</p>
+        <div class="divider"></div>
+    </header>
+
+    <!-- Sticky Navigation -->
+    <nav class="about-nav" id="aboutNav">
+        <ul>
+            <li><a href="#project-overview">Project Overview</a></li>
+            <li><a href="#about-college">About College</a></li>
+            <li><a href="#meet-team">Meet the Team</a></li>
+            <li><a href="#why-matters">Why It Matters</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+    </nav>
+
+    <!-- Project Overview Section -->
+    <section id="project-overview" class="about-section">
+        <div class="section-header">
+            <h2>About Our Project</h2>
+            <div class="divider"></div>
+        </div>
+        <div class="section-content">
+            <div class="text-content">
+                <h3>What is Deepfake Video Detection?</h3>
+                <p>Deepfake technology uses artificial intelligence to create highly realistic fake videos by swapping faces or altering facial expressions. Our system detects these manipulations using advanced LSTM (Long Short-Term Memory) networks that analyze temporal patterns in videos.</p>
+                
+                <h3>Why is it Important?</h3>
+                <p>With the rise of deepfake technology, there's an urgent need for reliable detection systems to combat misinformation, protect individuals' identities, and maintain trust in digital media.</p>
+                
+                <h3>How LSTM Improves Detection</h3>
+                <p>LSTM networks excel at analyzing sequential data, making them ideal for detecting inconsistencies in facial movements, blinking patterns, and other temporal features that deepfake algorithms often fail to replicate accurately.</p>
+            </div>
+            <div class="image-content">
+                <div class="process-placeholder">
+                    <i class="fas fa-project-diagram"></i>
+                    <p>Deepfake Detection Process</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About College Section -->
+    <section id="about-college" class="about-section">
+        <div class="section-header">
+            <h2>About KJ College of Engineering & Management Research</h2>
+            <div class="divider"></div>
+        </div>
+        <div class="section-content">
+            <div class="college-logo">
+                <div class="college-placeholder">
+                    <i class="fas fa-university"></i>
+                </div>
+            </div>
+            <div class="college-info">
+                <p>KJ College of Engineering & Management Research is a premier institution committed to excellence in technical education and research. Our college has been at the forefront of AI and cybersecurity research, fostering innovation and practical applications of cutting-edge technologies.</p>
+                <p>The Department of Computer Engineering has established a dedicated AI research lab that supports projects like this deepfake detection system, providing students with opportunities to work on real-world challenges.</p>
+                <a href="https://www.kjei.edu.in/kjcoemr/" target="_blank" class="cta-button">Visit College Website</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Meet the Team Section -->
+    <section id="meet-team" class="about-section">
+        <div class="section-header">
+            <h2>Meet Our Team</h2>
+            <div class="divider"></div>
+        </div>
+
+        <!-- Fully Unified Team Row -->
+        <div class="team-row">
+            <!-- Guide -->
+            <div class="team-member">
+                <div class="member-image"><i class="fas fa-user-tie"></i></div>
+                <h3>Dr. Nikita Kulkarni</h3>
+                <p class="role">Project Guide</p>
+                <p>Head of Computer Department with expertise in AI and Deep Learning</p>
+                <div class="social-links">
+                    <a href="#"><i class="fab fa-linkedin"></i></a>
+                    <a href="#"><i class="fab fa-github"></i></a>
+                </div>
+            </div>
+
+            <!-- Member 1 -->
+            <div class="team-member">
+                <div class="member-image"><i class="fas fa-user-graduate"></i></div>
+                <h3>Vivek Adawale</h3>
+                <p class="role">Member 1</p>
+                <div class="social-links">
+                    <a href="#"><i class="fab fa-linkedin"></i></a>
+                    <a href="#"><i class="fab fa-github"></i></a>
+                </div>
+            </div>
+
+            <!-- Member 2 -->
+            <div class="team-member">
+                <div class="member-image"><i class="fas fa-user-graduate"></i></div>
+                <h3>Prathmesh Bamne</h3>
+                <p class="role">Member 2</p>
+                <div class="social-links">
+                    <a href="#"><i class="fab fa-linkedin"></i></a>
+                    <a href="#"><i class="fab fa-github"></i></a>
+                </div>
+            </div>
+
+            <!-- Member 3 -->
+            <div class="team-member">
+                <div class="member-image"><i class="fas fa-user-graduate"></i></div>
+                <h3>Soham Bhamare</h3>
+                <p class="role">Member 3</p>
+                <div class="social-links">
+                    <a href="#"><i class="fab fa-linkedin"></i></a>
+                    <a href="#"><i class="fab fa-github"></i></a>
+                </div>
+            </div>
+
+            <!-- Member 4 -->
+            <div class="team-member">
+                <div class="member-image"><i class="fas fa-user-graduate"></i></div>
+                <h3>Aditya Desai</h3>
+                <p class="role">Member 4</p>
+                <div class="social-links">
+                    <a href="#"><i class="fab fa-linkedin"></i></a>
+                    <a href="#"><i class="fab fa-github"></i></a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Why It Matters -->
+    <section id="why-matters" class="about-section">
+        <div class="section-header">
+            <h2>Why This Project Matters</h2>
+            <div class="divider"></div>
+        </div>
+        <div class="features-grid">
+            <div class="feature-card">
+                <div class="feature-icon"><i class="fas fa-shield-alt"></i></div>
+                <h3>Combat Misinformation</h3>
+                <p>Helps identify manipulated media that could spread false information</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon"><i class="fas fa-user-secret"></i></div>
+                <h3>Protect Identities</h3>
+                <p>Prevents malicious use of personal likeness without consent</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon"><i class="fas fa-chart-line"></i></div>
+                <h3>Advanced Technology</h3>
+                <p>Utilizes state-of-the-art LSTM networks for temporal analysis</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact -->
+    <section id="contact" class="about-section">
+        <div class="section-header">
+            <h2>Get in Touch</h2>
+            <div class="divider"></div>
+        </div>
+        <div class="contact-content">
+            <div class="contact-info">
+                <h3>Contact Information</h3>
+                <p><i class="fas fa-envelope"></i> deepguard@kjcollege.ac.in</p>
+                <p><i class="fas fa-phone"></i> +91 9175295782</p>
+                <p><i class="fas fa-map-marker-alt"></i> KJ College of Engineering & Management Research, Pune, India</p>
+
+                <div class="social-media">
+                    <a href="#"><i class="fab fa-github"></i></a>
+                    <a href="#"><i class="fab fa-youtube"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-linkedin"></i></a>
+                </div>
+            </div>
+
+            <div class="contact-form">
+                <h3>Send us a Message</h3>
+                <form>
+                    <div class="form-group">
+                        <input type="text" placeholder="Your Name" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="email" placeholder="Your Email" required>
+                    </div>
+                    <div class="form-group">
+                        <textarea placeholder="Your Message" rows="4" required></textarea>
+                    </div>
+                    <button type="submit" class="cta-button">Send Message</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+</main>
+
+<!-- Footer -->
+<footer class="footer">
+    <div class="footer-container">
+        <div class="social-links">
+            <a href="#"><i class="fab fa-instagram"></i></a>
+            <a href="#"><i class="fab fa-youtube"></i></a>
+            <a href="#"><i class="fab fa-twitter"></i></a>
+        </div>
+        <div class="footer-nav">
+            <a href="{% url 'about' %}">About Us</a>
+            <a href="#">Terms & Conditions</a>
+            <a href="#contact">Contact Us</a>
+        </div>
+        <div class="footer-info">
+            <p>DeepGuard Research Lab</p>
+            <p>KJ College of Engineering & Management Research</p>
+            <p>Pune, India - 411048</p>
+        </div>
+    </div>
+    <div class="copyright">
+        <p>&copy; 2025 DeepGuard. All rights reserved.</p>
+    </div>
+</footer>
+
+<script src="{% static 'js/common.js' %}"></script>
+<script src="{% static 'js/about.js' %}"></script>
+</body>
+</html>

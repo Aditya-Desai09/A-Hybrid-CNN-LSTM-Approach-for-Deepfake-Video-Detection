@@ -1,0 +1,192 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register | DeepGuard</title>
+    <meta name="description" content="Create an account for DeepGuard's LSTM-based Deepfake Detection System">
+    <link rel="stylesheet" href="{% static 'css/common.css' %}">
+    <link rel="stylesheet" href="{% static 'css/register.css' %}">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    {% if messages %}
+    <ul class="messages">
+        {% for message in messages %}
+        <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+        {% endfor %}
+    </ul>
+    {% endif %}
+
+
+    <!-- Navbar -->
+    <nav class="navbar">
+        <div class="navbar-container">
+            <div class="logo">
+                <a href="/"><img src="{% static 'assets/logo.png' %}" alt="DeepGuard Logo"></a>
+                <span>DeepGuard</span>
+            </div>
+            <div class="nav-links">
+                <a href="/" class="active">Home</a>
+                <a href="/login/">Login</a>
+                <a href="/about/">About</a>
+                <button id="theme-toggle" class="theme-toggle">
+                    <i class="fas fa-moon"></i>
+                </button>
+            </div>
+            <div class="mobile-menu">
+                <i class="fas fa-bars"></i>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Registration Section -->
+    <main class="register-container">
+        <section class="register-form-container">
+            <div class="register-header">
+                <h2>Create Your Account</h2>
+                <p>Join our Deepfake detection platform today</p>
+                <div class="divider"></div>
+            </div>
+
+            <form id="registerForm" method="POST" action="{% url 'register' %}">
+                {% csrf_token %}
+
+                <!-- Username Field -->
+                <div class="form-group">
+                    <label for="username">Username</label>
+                    <div class="input-container">
+                        <i class="fas fa-user"></i>
+                        <input type="text" 
+                               id="username" 
+                               name="username" 
+                               placeholder="Enter your username" 
+                               minlength="5"
+                               pattern="[A-Za-z0-9]+"
+                               required>
+                    </div>
+                    <div class="hint">5+ characters, letters and numbers only</div>
+                    <div class="error-message" id="username-error"></div>
+                </div>
+
+                <!-- Email Field -->
+                <div class="form-group">
+                    <label for="email">Email</label>
+                    <div class="input-container">
+                        <i class="fas fa-envelope"></i>
+                        <input type="email" 
+                               id="email" 
+                               name="email" 
+                               placeholder="Enter your email" 
+                               required>
+                    </div>
+                    <div class="error-message" id="email-error"></div>
+                </div>
+
+                <!-- Password Field -->
+                <div class="form-group">
+                    <label for="password">Password</label>
+                    <div class="input-container">
+                        <i class="fas fa-lock"></i>
+                        <input type="password" 
+                               id="password" 
+                               name="password" 
+                               placeholder="Create a password" 
+                               minlength="8"
+                               required>
+                        <i class="fas fa-eye toggle-password" id="togglePassword"></i>
+                    </div>
+                    <div class="password-strength">
+                        <div class="strength-bar">
+                            <span class="bar-segment"></span>
+                            <span class="bar-segment"></span>
+                            <span class="bar-segment"></span>
+                        </div>
+                        <span class="strength-text">Password Strength</span>
+                    </div>
+                    <div class="hint">8+ characters with uppercase, number, and symbol</div>
+                    <div class="error-message" id="password-error"></div>
+                </div>
+
+                <!-- Confirm Password Field -->
+                <div class="form-group">
+                    <label for="confirmPassword">Confirm Password</label>
+                    <div class="input-container">
+                        <i class="fas fa-lock"></i>
+                        <input type="password" 
+                               id="confirmPassword" 
+                               name="confirmPassword" 
+                               placeholder="Confirm your password" 
+                               required>
+                        <i class="fas fa-check confirm-icon" id="confirmIcon"></i>
+                    </div>
+                    <div class="error-message" id="confirm-error"></div>
+                </div>
+
+                <!-- Phone Number Field -->
+                <div class="form-group">
+                    <label for="phone">Phone Number</label>
+                    <div class="input-container">
+                        <i class="fas fa-phone"></i>
+                        <input type="tel" 
+                               id="phone" 
+                               name="phone" 
+                               placeholder="Enter your phone number" 
+                               pattern="[0-9]{10}"
+                               maxlength="10"
+                               required>
+                    </div>
+                    <div class="error-message" id="phone-error"></div>
+                </div>
+
+                <!-- Terms Checkbox -->
+                <div class="form-group terms-group">
+                    <input type="checkbox" id="terms" name="terms" required>
+                    <label for="terms">I agree to the <a href="/terms/">Terms & Conditions</a></label>
+                    <div class="error-message" id="terms-error"></div>
+                </div>
+
+                <!-- Submit Button -->
+                <button type="submit" class="register-btn" id="registerBtn" disabled>
+                    <span id="registerText">Register Now</span>
+                    <div class="spinner hidden" id="spinner"></div>
+                </button>
+
+                <!-- Login Link -->
+                <div class="login-link">
+                    Already have an account? <a href="/login/">Log in here</a>
+                </div>
+            </form>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="social-links">
+                <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                <a href="#" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+                <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+            </div>
+            <div class="footer-nav">
+                <a href="/about/">About Us</a>
+                <a href="/terms/">Terms & Conditions</a>
+                <a href="#contact">Contact Us</a>
+            </div>
+            <div class="footer-info">
+                <p>DeepGuard Research Lab</p>
+                <p>KJ College of Engineering & Management Research</p>
+                <p>Pune, India - 411048</p>
+            </div>
+        </div>
+        <div class="copyright">
+            <p>&copy; 2025 DeepGuard. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="{% static 'js/common.js' %}"></script>
+    <script src="{% static 'js/register.js' %}"></script>
+</body>
+</html>

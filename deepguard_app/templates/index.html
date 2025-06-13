@@ -1,0 +1,124 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DeepGuard | LSTM-Based DeepFake Detection</title>
+    <link rel="stylesheet" href="{% static 'css/common.css' %}">
+    <link rel="stylesheet" href="{% static 'css/home.css' %}">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+
+    <!-- Navbar -->
+    <nav class="navbar">
+        <div class="navbar-container">
+            <div class="logo">
+                <a href="/"><img src="{% static 'assets/logo.png' %}" alt="DeepGuard Logo"></a>
+                <span>DeepGuard</span>
+            </div>
+            <div class="nav-links">
+                <a href="/" class="active">Home</a>
+                <a href="/login/">Login</a>
+                <a href="/chart/">Accuracy</a>
+                <a href="/about/">About</a>
+                <button id="theme-toggle" class="theme-toggle">
+                    <i class="fas fa-moon"></i>
+                </button>
+            </div>
+            <div class="mobile-menu">
+                <i class="fas fa-bars"></i>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main>
+        <!-- Hero Section -->
+        <section class="hero">
+            <div class="hero-content">
+                <h1>Advanced DeepFake Detection Using LSTM Networks</h1>
+                <p class="subtitle">Protecting digital integrity with cutting-edge AI technology</p>
+                <a href="/login/" class="cta-button">Get Started</a>
+            </div>
+            <div class="hero-image">
+                <img src="{% static 'assets/d.jpg' %}" alt="AI Detection Illustration">
+            </div>
+        </section>
+
+        <!-- Abstract Section -->
+        <section class="abstract">
+            <div class="section-header">
+                <h2>Understanding DeepFake Technology</h2>
+                <div class="divider"></div>
+            </div>
+            <div class="abstract-content">
+                <p>DeepFake technology uses artificial intelligence to create highly realistic fake videos by swapping faces or altering facial expressions. While impressive, this technology poses significant risks to information integrity, security, and trust in digital media.</p>
+                <p>Our LSTM-based detection system analyzes temporal patterns in videos to identify subtle artifacts left by DeepFake generation algorithms, achieving state-of-the-art accuracy in distinguishing real from manipulated content.</p>
+            </div>
+        </section>
+
+        <!-- Demonstration Section -->
+        <section class="demo">
+            <div class="section-header">
+                <h2>How Our Detection Works</h2>
+                <div class="divider"></div>
+            </div>
+            <div class="demo-container">
+                <div class="video-container">
+                    <video controls poster="{% static 'assets/video-poster.jpg' %}">
+                        <source src="{% static 'assets/Prj_M.mp4' %}" type="video/mp4">
+                        <div class="video-placeholder">
+                            <i class="fas fa-play-circle"></i>
+                            <p>DeepFake Detection Demo</p>
+                        </div>
+                    </video>
+                </div>
+                <div class="demo-description">
+                    <h3>LSTM Temporal Analysis</h3>
+                    <p>Our system uses Long Short-Term Memory networks to examine frame sequences, detecting inconsistencies in facial movements, blinking patterns, and other temporal features that DeepFakes often fail to replicate accurately.</p>
+                    <ul class="features-list">
+                        <li><i class="fas fa-check-circle"></i> 94.7% detection accuracy on benchmark datasets</li>
+                        <li><i class="fas fa-check-circle"></i> Real-time analysis capabilities</li>
+                        <li><i class="fas fa-check-circle"></i> Robust against common video compression artifacts</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="cta-container">
+                <a href="/login/" class="cta-button">Get Started</a>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="social-links">
+                <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                <a href="#" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+                <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+            </div>
+            <div class="footer-nav">
+                <a href="/about/">About Us</a>
+                <a href="/terms/">Terms & Conditions</a>
+                <a href="#contact">Contact Us</a>
+            </div>
+            <div class="footer-info">
+                <p>DeepGuard Research Lab</p>
+                <p>KJ College of Engineering & Management Research</p>
+                <p>Pune, India - 411048</p>
+            </div>
+        </div>
+        <div class="copyright">
+            <p>&copy; 2025 DeepGuard. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="{% static 'js/common.js' %}"></script>
+    <script src="{% static 'js/home.js' %}"></script>
+
+</body>
+</html>

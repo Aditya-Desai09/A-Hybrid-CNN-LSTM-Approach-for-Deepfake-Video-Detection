@@ -1,0 +1,116 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Model Accuracy | DeepGuard</title>
+    <link rel="stylesheet" href="{% static 'css/common.css' %}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+    <style>
+        .metrics-container {
+            max-width: 1000px;
+            margin: 2rem auto;
+            padding: 2rem;
+            background-color: var(--surface-color);
+            border-radius: 12px;
+            box-shadow: 0 0 12px rgba(0, 0, 0, 0.15);
+            color: var(--text-color);
+        }
+        .metrics-header {
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+        .metrics-header h2 {
+            font-size: 2rem;
+            color: var(--primary-color);
+            padding-top: 45px;
+        }
+        .metrics-section {
+            margin-bottom: 2rem;
+        }
+        .metrics-section h3 {
+            border-left: 4px solid var(--primary-color);
+            padding-left: 0.5rem;
+            margin-bottom: 1rem;
+        }
+        .metrics-values pre {
+            background: #222;
+            padding: 1rem;
+            border-radius: 8px;
+            color: #fff;
+            overflow-x: auto;
+        }
+        .metrics-image {
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+    </style>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
+
+<!-- Navbar -->
+<nav class="navbar">
+    <div class="navbar-container">
+        <div class="logo">
+            <a href="{% url 'home' %}"><img src="{% static 'assets/logo.png' %}" alt="DeepGuard Logo"></a>
+            <span>DeepGuard</span>
+        </div>
+        <div class="nav-links">
+            <a href="{% url 'home' %}">Home</a>
+            <a href="{% url 'upload' %}">Upload</a>
+            <a href="{% url 'chart' %}">Accuracy</a>
+            <a href="{% url 'about' %}">About</a>
+            <button id="theme-toggle" class="theme-toggle">
+                <i class="fas fa-moon"></i>
+            </button>
+        </div>
+    </div>
+</nav>
+
+<main class="metrics-container">
+    <div class="metrics-header">
+        <h2>Model Evaluation</h2>
+    </div>
+
+    <div class="metrics-section">
+        <h3>Confusion Matrix</h3>
+        <div class="metrics-image">
+            <img src="{% static 'metrics/confusion_matrix.png' %}" alt="Confusion Matrix" width="400px">
+        </div>
+    </div>
+
+    <div class="metrics-section">
+        <h3>ROC Curve</h3>
+        <div class="metrics-image">
+            <img src="{% static 'metrics/auc_roc.png' %}" alt="ROC Curve" width="400px">
+        </div>
+    </div>
+
+    <div class="metrics-section metrics-values">
+        <h3>Full Classification Report</h3>
+        <pre>
+Accuracy: 89.50%
+
+Confusion Matrix:
+[[95  5]
+ [16 84]]
+
+Classification Report:
+              precision    recall  f1-score   support
+
+   FAKE       0.86      0.95      0.90       100
+   REAL       0.94      0.84      0.89       100
+
+accuracy                           0.90       200
+macro avg       0.90      0.90      0.89       200
+weighted avg    0.90      0.90      0.89       200
+        </pre>
+    </div>
+</main>
+
+<!-- Include JS for theme switch -->
+<script src="{% static 'js/common.js' %}"></script>
+
+</body>
+</html>

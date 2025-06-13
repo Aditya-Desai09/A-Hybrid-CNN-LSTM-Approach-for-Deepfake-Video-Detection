@@ -1,0 +1,144 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Detection Results | DeepGuard</title>
+    <link rel="stylesheet" href="{% static 'css/common.css' %}">
+    <link rel="stylesheet" href="{% static 'css/result.css' %}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
+
+<!-- Navbar -->
+<nav class="navbar">
+    <div class="navbar-container">
+        <div class="logo">
+            <a href="{% url 'home' %}">
+                <img src="{% static 'assets/logo.png' %}" alt="DeepGuard Logo">
+            </a>
+            <span>DeepGuard</span>
+        </div>
+
+        <div class="nav-links">
+            <a href="{% url 'home' %}">Home</a>
+            <a href="{% url 'chart' %}">Accuracy</a>
+            <a href="{% url 'about' %}">About</a>
+
+            {% if user.is_authenticated %}
+                <a href="{% url 'logout' %}" class="nav-button logout-btn">
+                    <i class="fas fa-sign-out-alt"></i> Logout
+                </a>
+            {% else %}
+                <a href="{% url 'login' %}" class="nav-button login-btn">
+                    <i class="fas fa-sign-in-alt"></i> Login
+                </a>
+            {% endif %}
+
+            <button id="theme-toggle" class="theme-toggle">
+                <i class="fas fa-moon"></i>
+            </button>
+        </div>
+    </div>
+</nav>
+
+<!-- Results Container -->
+<main class="result-container">
+    <div class="result-header">
+        <h2>DeepFake Detection Results</h2>
+    </div>
+
+    <!-- Video Preview -->
+    <div class="result-video">
+        <video controls>
+            <source src="/{{ video_path }}" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
+    </div>
+
+    <!-- Prediction Summary -->
+    <div class="result-summary">
+        <div>
+            <h4>Prediction</h4>
+            <p id="result-label">{{ result_label }}</p>
+        </div>
+        <div>
+            <h4>Confidence</h4>
+            <p id="confidence-score">{{ confidence_score|floatformat:2 }}%</p>
+        </div>
+    </div>
+
+    <!-- Suspicious Frames (no label here) -->
+    <section class="frames-section">
+        <h3>Suspicious Frames</h3>
+        <div class="frame-grid">
+            {% for path in frame_paths %}
+                <img src="/{{ path }}" alt="Suspicious Frame">
+            {% endfor %}
+        </div>
+    </section>
+
+    <!-- Detected Faces with Border + Label -->
+    <section class="faces-section">
+        <h3>Detected Faces</h3>
+        <div class="face-grid">
+            {% for path in face_paths %}
+                <div class="face-box {{ result_label|lower }}">
+                    <img src="/{{ path }}" alt="Detected Face">
+                    <span class="face-label">{{ result_label }}</span>
+                </div>
+            {% endfor %}
+        </div>
+    </section>
+
+    <!-- Dynamic Summary Based on Prediction -->
+    <section class="summary-section">
+        <h3>Key Findings</h3>
+        <ul class="summary-list">
+            {% if result_label == 'FAKE' %}
+                <li>Face inconsistencies detected in multiple frames.</li>
+                <li>High anomaly score in temporal pattern near the middle segment.</li>
+                <li>Possible manipulation detected based on lip-sync mismatch.</li>
+            {% else %}
+                <li>No signs of tampering detected.</li>
+                <li>Facial motion and consistency within acceptable thresholds.</li>
+                <li>Temporal and spatial coherence confirmed to be natural.</li>
+            {% endif %}
+        </ul>
+    </section>
+
+    <!-- Action Buttons -->
+    <div class="result-actions no-print">
+        <a href="{% url 'upload' %}" class="btn-primary">Analyze Another Video</a>
+        <button onclick="window.print()" class="btn-secondary">Print Report</button>
+    </div>
+
+</main>
+
+<!-- Footer -->
+<footer class="footer">
+    <div class="footer-container">
+        <div class="social-links">
+            <a href="#"><i class="fab fa-instagram"></i></a>
+            <a href="#"><i class="fab fa-youtube"></i></a>
+            <a href="#"><i class="fab fa-twitter"></i></a>
+        </div>
+        <div class="footer-nav">
+            <a href="{% url 'about' %}">About Us</a>
+            <a href="{% url 'terms' %}">Terms & Conditions</a>
+            <a href="#contact">Contact</a>
+        </div>
+        <div class="footer-info">
+            <p>DeepGuard Research Lab</p>
+            <p>KJ College of Engineering & Management Research</p>
+            <p>Pune, India - 411048</p>
+        </div>
+    </div>
+    <p class="copyright">© 2025 DeepGuard. All rights reserved.</p>
+</footer>
+
+<script src="{% static 'js/common.js' %}"></script>
+<script src="{% static 'js/result.js' %}"></script>
+</body>
+</html>
